@@ -1,0 +1,26 @@
+:root {
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-text-color: var(--ifm-font-color-base);
+}
+
+.DocSearch-Button {
+  margin: 0;
+  transition: all var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+}
+
+.DocSearch-Container {
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
+
+/* Add these new styles for the search-container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Make sure the chat window has higher z-index than search modal */
+.chatWindow {
+  z-index: calc(var(--ifm-z-index-fixed) + 2);
+}
