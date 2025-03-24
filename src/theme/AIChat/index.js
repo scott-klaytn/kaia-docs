@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './styles.module.css';
 import clsx from 'clsx';
+import ReactMarkdown from 'react-markdown';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useColorMode } from '@docusaurus/theme-common';
 
 function AIChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +14,8 @@ function AIChat() {
   const [roomId, setRoomId] = useState('');
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
+  const { colorMode } = useColorMode();
+  const isDarkTheme = colorMode === 'dark';
 
   // Load messages from localStorage on component mount
   useEffect(() => {
@@ -134,7 +139,11 @@ function AIChat() {
         message.isError && styles.errorMessage
       )}
     >
-      {message.text}
+      {message.sender === 'bot' ? (
+        <ReactMarkdown>{message.text}</ReactMarkdown>
+      ) : (
+        message.text
+      )}
     </div>
   );
 
@@ -154,13 +163,18 @@ function AIChat() {
         className={styles.chatButton} 
         onClick={toggleChat}
         aria-label="Ask AI"
+        data-theme={isDarkTheme ? 'dark' : 'light'}
       >
         <span className={styles.chatButtonText}>Ask AI</span>
       </button>
       
       {/* Chat window */}
       {isOpen && (
-        <div className={styles.chatWindow} ref={chatContainerRef}>
+        <div 
+          className={styles.chatWindow} 
+          ref={chatContainerRef}
+          data-theme={isDarkTheme ? 'dark' : 'light'}
+        >
           <div className={styles.chatHeader}>
             <h3>Kaia AI Assistant</h3>
             <div className={styles.chatControls}>
@@ -204,7 +218,7 @@ function AIChat() {
               value={input}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
-              placeholder="Ask a question..."
+              placeholder="Type your message..."
               disabled={isLoading}
               rows={1}
             />
@@ -216,6 +230,10 @@ function AIChat() {
             >
               Send
             </button>
+          </div>
+          
+          <div className={styles.disclaimer}>
+            AI answers can be wrong. Check official sources to confirm.
           </div>
         </div>
       )}

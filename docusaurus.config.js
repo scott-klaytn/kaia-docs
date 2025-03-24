@@ -3,13 +3,13 @@
 
 const lightCodeTheme = require('prism-react-renderer').themes.github
 const darkCodeTheme = require('prism-react-renderer').themes.dracula
-const { navbarItemStrings, legacyDocsLinks } = require('./localeStrings'); // import locale-dependant navbar items 
+//const { navbarItemStrings, legacyDocsLinks } = require('./localeStrings'); // import locale-dependant navbar items 
 const {
   remarkCodeHike,
 } = require("@code-hike/mdx")
 
-process.env.DOCUSAURUS_CURRENT_VERSION = process.env.DOCUSAURUS_CURRENT_VERSION === undefined ? 'current' : process.env.DOCUSAURUS_CURRENT_VERSION
-process.env.DOCUSAURUS_CURRENT_LOCALE = process.env.DOCUSAURUS_CURRENT_LOCALE === 'undefined' || undefined ? 'en' : process.env.DOCUSAURUS_CURRENT_LOCALE
+//process.env.DOCUSAURUS_CURRENT_VERSION = process.env.DOCUSAURUS_CURRENT_VERSION === undefined ? 'current' : process.env.DOCUSAURUS_CURRENT_VERSION
+//process.env.DOCUSAURUS_CURRENT_LOCALE = process.env.DOCUSAURUS_CURRENT_LOCALE === 'undefined' || undefined ? 'en' : process.env.DOCUSAURUS_CURRENT_LOCALE
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -31,7 +31,7 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'vi'],
 //    locales: ['en', 'ko', 'ja', 'zh-CN', 'zh-TW', 'vi'],
     path: 'i18n',
     localeConfigs: {
@@ -375,7 +375,7 @@ const config = {
             sidebarid: 'miniDappSidebar',
             label: 'Mini dApps',
           },
-          {
+/**          {
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
@@ -388,7 +388,7 @@ const config = {
                 label: 'Archived',
               },
             ],
-          },
+          },*/
           {
             type: 'localeDropdown',
             position: 'right',

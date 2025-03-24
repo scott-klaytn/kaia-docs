@@ -3,7 +3,7 @@
 }
 
 .chatButton {
-  background-color: #0066cc;
+  background-color: var(--ifm-color-primary);
   color: white;
   border: none;
   border-radius: 20px;
@@ -13,11 +13,21 @@
   display: flex;
   align-items: center;
   transition: background-color 0.2s;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .chatButton:hover {
-  background-color: #0055aa;
+  background-color: var(--ifm-color-primary-darker);
+}
+
+/* Dark mode specific styles for chat button */
+.chatButton[data-theme='dark'] {
+  background-color: var(--ifm-color-primary);
+  color: #000; /* Black text on dark mode button */
+}
+
+.chatButton[data-theme='dark']:hover {
+  background-color: var(--ifm-color-primary-darker);
 }
 
 .chatButtonText {
@@ -35,17 +45,29 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 1002; /* Higher than search modal */
   overflow: hidden;
 }
 
+.chatWindow[data-theme='dark'] {
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
 .chatHeader {
-  background-color: #0066cc;
+  background-color: var(--ifm-color-primary);
   color: white;
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Dark mode specific styles for header text */
+.chatWindow[data-theme='dark'] .chatHeader h3,
+.chatWindow[data-theme='dark'] .chatHeader .closeButton,
+.chatWindow[data-theme='dark'] .chatHeader .clearButton {
+  color: #000; /* Black text in header for dark mode */
 }
 
 .chatHeader h3 {
@@ -82,7 +104,7 @@
 }
 
 .welcomeMessage {
-  color: #666;
+  color: var(--ifm-color-emphasis-700);
   text-align: center;
   margin: auto 0;
   padding: 20px;
@@ -97,16 +119,45 @@
   line-height: 1.4;
 }
 
+.chatBubble p {
+  margin: 0 0 8px 0;
+}
+
+.chatBubble p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style links in messages */
+.chatBubble a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+/* Style code blocks in messages */
+.chatBubble code {
+  background-color: var(--ifm-code-background);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+/* Light mode user message (with a darker background) */
 .userMessage {
-  background-color: #e1f0ff;
-  color: #333;
+  background-color: var(--ifm-color-primary);
+  color: white; /* White text for user messages in light mode */
   align-self: flex-end;
   border-bottom-right-radius: 4px;
 }
 
+/* Dark mode user message */
+.chatWindow[data-theme='dark'] .userMessage {
+  background-color: var(--ifm-color-primary);
+  color: #000; /* Black text for user messages in dark mode */
+}
+
 .botMessage {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
@@ -117,7 +168,7 @@
 }
 
 .chatInput {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
   padding: 12px;
   display: flex;
   gap: 10px;
@@ -125,20 +176,22 @@
 
 .chatInput textarea {
   flex: 1;
-  border: 1px solid #ddd;
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 18px;
   padding: 10px 14px;
   resize: none;
   font-family: inherit;
   outline: none;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
 }
 
 .chatInput textarea:focus {
-  border-color: #0066cc;
+  border-color: var(--ifm-color-primary);
 }
 
 .sendButton {
-  background-color: #0066cc;
+  background-color: var(--ifm-color-primary);
   color: white;
   border: none;
   border-radius: 18px;
@@ -147,8 +200,13 @@
   font-weight: 500;
 }
 
+/* Dark mode specific styles for send button */
+.chatWindow[data-theme='dark'] .sendButton:not(:disabled) {
+  color: #000; /* Black text for the send button when not disabled in dark mode */
+}
+
 .sendButton:disabled {
-  background-color: #cccccc;
+  background-color: var(--ifm-color-emphasis-300);
   cursor: not-allowed;
 }
 
@@ -162,7 +220,7 @@
 .loadingDot {
   width: 8px;
   height: 8px;
-  background-color: #0066cc;
+  background-color: var(--ifm-color-primary);
   border-radius: 50%;
   animation: bounce 1.4s infinite ease-in-out;
 }
@@ -177,6 +235,15 @@
 
 .loadingDot:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+.disclaimer {
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-600);
+  background-color: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 @keyframes bounce {

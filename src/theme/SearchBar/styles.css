@@ -13,14 +13,16 @@
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
 
-/* Add these new styles for the search-container */
+/* Style for the search-container to display elements horizontally */
 .search-container {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Make sure the chat window has higher z-index than search modal */
-.chatWindow {
-  z-index: calc(var(--ifm-z-index-fixed) + 2);
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .search-container {
+    margin-right: 0;
+  }
 }

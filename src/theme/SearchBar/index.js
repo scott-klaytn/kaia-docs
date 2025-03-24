@@ -176,17 +176,18 @@ function DocSearch({externalUrlRegex, ...props}) {
         />
       </Head>
 
-      <DocSearchButton
-        onTouchStart={importDocSearchModalIfNeeded}
-        onFocus={importDocSearchModalIfNeeded}
-        onMouseOver={importDocSearchModalIfNeeded}
-        onClick={openModal}
-        ref={searchButtonRef}
-        translations={props.translations?.button ?? translations.button}
-      />
-
-      {/* Add the AIChat component here */}
-      <AIChat />
+      <div className="search-container">
+        <AIChat />
+        
+        <DocSearchButton
+          onTouchStart={importDocSearchModalIfNeeded}
+          onFocus={importDocSearchModalIfNeeded}
+          onMouseOver={importDocSearchModalIfNeeded}
+          onClick={openModal}
+          ref={searchButtonRef}
+          translations={props.translations?.button ?? translations.button}
+        />
+      </div>
 
       {isOpen &&
         DocSearchModal &&
