@@ -7,7 +7,7 @@
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 8px 16px;
+  padding: 5px 13px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -30,10 +30,18 @@
   background-color: var(--ifm-color-primary-darker);
 }
 
+/* Icon styling */
+.aiIcon {
+  width: 22px;
+  height: 22px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
 .chatButtonText {
   font-size: 15px;
   margin: 0;
-  /*margin-left: 4px;*/
+  margin-right: 3px;
 }
 
 .chatWindow {

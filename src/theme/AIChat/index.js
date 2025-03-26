@@ -17,6 +17,9 @@ function AIChat() {
   const { colorMode } = useColorMode();
   const isDarkTheme = colorMode === 'dark';
 
+  // Get the appropriate icon URL based on the theme
+  const aiIconUrl = isDarkTheme ? '/img/ai-agent-dark.svg' : '/img/ai-agent-light.svg';
+  
   // Load messages from localStorage on component mount
   useEffect(() => {
     const storedMessages = localStorage.getItem('aiChatMessages');
@@ -165,6 +168,7 @@ function AIChat() {
         aria-label="Ask AI"
         data-theme={isDarkTheme ? 'dark' : 'light'}
       >
+        <img src={aiIconUrl} alt="" className={styles.aiIcon} />
         <span className={styles.chatButtonText}>Ask AI</span>
       </button>
       
